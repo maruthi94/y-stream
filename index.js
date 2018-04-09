@@ -4,7 +4,8 @@ const id = '5cFUZ03Sbhc';
 const fs = require('fs');
 const ffmpeg   = require('fluent-ffmpeg');
 const ytdl = require('ytdl-core');
-app.listen(3500, (x)=> {
+var port = process.env.PORT || 3000;
+app.listen(port, (x)=> {
     console.log('listening to the 3500');
 });
 
@@ -34,4 +35,8 @@ app.get('/vid',(req,res) => {
     console.log(url);
 //     ytdl(url, { filter: (format) => format.container === 'mp4' })
 //   .pipe(res);
+});
+
+app.get('/', (req, res)=> {
+    res.send("Hello World");
 });
