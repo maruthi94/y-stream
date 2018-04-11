@@ -17,7 +17,6 @@ let stream = ytdl(url, {
 app.get('/vid',(req,res) => {
     //ffmpeg(stream)
     ffmpeg(stream)
-    .setFfmpegPath('/app/vendor/ffmpeg/bin')
     .withAudioCodec('libmp3lame')
     .toFormat('mp3')
     .output(res)
