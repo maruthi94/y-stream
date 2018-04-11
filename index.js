@@ -14,7 +14,7 @@ let stream = ytdl(url, {
     filter: 'audioonly',
   });
 
-app.get('/vid',(req,res) => {
+app.get('/audio',(req,res) => {
     //ffmpeg(stream)
     ffmpeg(stream)
     .withAudioCodec('libmp3lame')
@@ -40,3 +40,8 @@ app.get('/vid',(req,res) => {
 app.get('/', (req, res)=> {
     res.send("Hello World");
 });
+
+app.get('/vid', (req, res) => {
+  ytdl(url, { filter: (format) => format.container === 'mp4' })
+  .pipe(res);
+})
